@@ -117,7 +117,7 @@ func TestBlock(t *testing.T) {
 				{
 					ts:  8,
 					str: "hello, worl\nd8!",
-					lbs: `{a="a2", b="b"}`,
+					lbs: labels.Labels{}.String(),
 				},
 				{
 					ts:  8,
@@ -133,6 +133,11 @@ func TestBlock(t *testing.T) {
 					ts:  9,
 					str: "",
 					lbs: labels.Labels{}.String(),
+				},
+				{
+					ts:  10,
+					str: "hello, world10!",
+					lbs: `{a="a2", b="b"}`,
 				},
 			}
 
