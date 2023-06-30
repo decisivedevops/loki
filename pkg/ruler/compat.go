@@ -157,7 +157,7 @@ func MultiTenantRuleManager(cfg Config, evaluator Evaluator, overrides RulesLimi
 			QueryFunc:       queryFn,
 			Context:         user.InjectOrgID(ctx, userID),
 			ExternalURL:     cfg.ExternalURL.URL,
-			NotifyFunc:      ruler.SendAlerts(notifier, cfg.ExternalURL.URL.String()),
+			NotifyFunc:      ruler.SendAlerts(notifier, cfg.ExternalURL.URL.String(), cfg.DatasourceUID),
 			Logger:          logger,
 			Registerer:      reg,
 			OutageTolerance: cfg.OutageTolerance,
@@ -343,4 +343,4 @@ type exprAdapter struct {
 func (exprAdapter) PositionRange() parser.PositionRange { return parser.PositionRange{} }
 func (exprAdapter) PromQLExpr()                         {}
 func (exprAdapter) Type() parser.ValueType              { return parser.ValueType("unimplemented") }
-func (exprAdapter) Pretty(level int) string             { return "" }
+func (exprAdapter) Pretty(_ int) string                 { return "" }
